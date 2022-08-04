@@ -4,10 +4,11 @@ select
 	a.tdbkSeq
     , a.tdbkBookTitle
     , a.tdbkSubTitle
+    , c.tdauName
 from  tradBook a
 -- inner join tradBookAuthor b on b.tdbkathSeq = a.tdbkSeq;
 left join tradBookAuthor b on b.tdbkathSeq = a.tdbkSeq
-
+left join tradAuthor c on c.tdauSeq = b.tdbkathSeq
 ;
 
 select 
