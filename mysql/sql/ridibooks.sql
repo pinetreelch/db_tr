@@ -16,7 +16,20 @@ select * from infraMember;
 select * from infraMember where ifmmId = "pinetreelch"  and  ifmmPwd = "sdfsdf";
 
 -- 메인화면
+select 
+	a.tdbkSeq
+	,a.tdbkBookTitle
+    ,a.tdbkSubtitle
+    ,b.tdbkathSeq
+    ,b.tradAuthor_tdatSeq
+    ,b.tradBook_tdbkSeq
+    ,c.tdauName
 
+from tradBook a
+left join tradBookAuthor b on a.tdbkSeq = b.tradBook_tdbkSeq
+left join tradAuthor c on b.tradAuthor_tdatSeq = c.tdauSeq
+
+where a.tdbkSeq = 1;
 
 
 -- 책 상세보기 페이지 불러오기
@@ -58,8 +71,8 @@ select
     , c.tdauLinkTwitter
     , c.tdauLinkSite
 from tradBook a
-inner join tradBookAuthor b on a.tdbkSeq = b.tradBook_tdbkSeq
-inner join tradAuthor c on b.tradAuthor_tdatSeq = c.tdauSeq
+left join tradBookAuthor b on a.tdbkSeq = b.tradBook_tdbkSeq
+left join tradAuthor c on b.tradAuthor_tdatSeq = c.tdauSeq
 
 where a.tdbkSeq = 1;
 
