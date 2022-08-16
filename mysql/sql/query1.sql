@@ -77,3 +77,20 @@ UPDATE tradAuthor SET tdbkToc =
 
 "
 WHERE tdauSeq =19;
+
+
+
+select 
+	a.tdbkSeq
+    ,a.tdbkBookTitle
+    ,a.tdbkSubtitle
+    ,a.tdPaperprice
+    ,b.tdbkathSeq
+	,(select c.tdauName from tradAuthor c where 1=1 and c.tdauSeq = b.tradAuthor_tdatSeq ) as "저자"
+from tradBook a
+left join tradBookAuthor b on a.tdbkSeq = b.tradBook_tdbkSeq
+left join tradAuthor c on b.tradAuthor_tdatSeq = c.tdauSeq
+
+where a.tdbkSeq = 1; 
+;
+	
