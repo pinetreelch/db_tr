@@ -91,6 +91,39 @@ from tradBook a
 left join tradBookAuthor b on a.tdbkSeq = b.tradBook_tdbkSeq
 left join tradAuthor c on b.tradAuthor_tdatSeq = c.tdauSeq
 
-where a.tdbkSeq = 1; 
+order by tdbkSeq desc
 ;
+
+select
+	ifmmSeq
+    ,ifmmName
+    ,gender
+    ,ifmmId
+    from  infraMember
+    
+    where gender = 0
+    
+Union
+
+select
+	ifmmSeq
+    ,ifmmName
+    ,gender
+    ,ifmmId
+    from  infraMember
+    
+    where gender = 1
+    ;
+    
+select
+	ifmmName
+    from infraMember
+    
+union
+
+select
+	tdbkBookTitle
+    from tradBook
+    ;
+    
 	

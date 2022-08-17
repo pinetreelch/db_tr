@@ -74,7 +74,11 @@ from tradBook a
 left join tradBookAuthor b on a.tdbkSeq = b.tradBook_tdbkSeq
 left join tradAuthor c on b.tradAuthor_tdatSeq = c.tdauSeq
 
-where a.tdbkSeq = 1;
+
+;
 -- order by (등록일, 수정일)-- 숫사, 알파벳, 한글 아무것도 없으면 정방향// 아무것도 없다는 얘기는 asc를 사용하지 않은 것. ASC뜻은 정방향이라는 뜻 반대로 DESC가 있음. DESC는 역방향(한글, 알파벳, 숫자).// 정렬의 순서를 주고 싶을 때는 콤마 (,)를 사용 // defaultNY subQuery Order by 
+-- group by,, sum(), having// 
+-- union 
+
 -- 구매페이지
   
