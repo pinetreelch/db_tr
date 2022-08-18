@@ -126,4 +126,19 @@ select
     from tradBook
     ;
     
-	
+CREATE TABLE IF NOT EXISTS `tiger`.`bkUploaded` (
+  `bkuSeq` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `type` TINYINT NULL,
+  `defaultNY` TINYINT NULL,
+  `sort` TINYINT NULL,
+  `orginalName` VARCHAR(45) NULL,
+  `uuidName` VARCHAR(45) NULL,
+  `ext` VARCHAR(45) NULL,
+  `size` INT NULL,
+  `delNY` TINYINT NOT NULL,
+  `bkSeq` INT NOT NULL,
+  PRIMARY KEY (`bkuSeq`))
+ENGINE = InnoDB
+;
+
+
