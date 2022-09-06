@@ -4,13 +4,33 @@ use tiger;
 select 
 	a.cgSeq
     , a.cgName
-    , b.cSeq
-    , b.cdName
+    , b.*
 from  codeGroup a
 -- inner join tradBookAuthor b on b.tdbkathSeq = a.tdbkSeq;
 left join codeCd b on a.cgSeq  = b.codeGroup_cgSeq; 
 ;
 
+		select 
+			b.cgSeq
+		    , b.cgName
+		    , a.*
+		  
+		from  codeGroup b
+		
+		left join codeCd a on b.cgSeq  = a.codeGroup_cgSeq 
+		WHERE 1=1
+			AND a.delNY = 0
+            ;
+            
+		select
+			a. *
+            , b. *
+		from codeCd a
+		join codeGroup b on a.codeGroup_cgSeq = b.cgSeq
+        WHERE 1=1
+			AND a.delNY = 0
+            ;
+            
 -- 로그인
 select * from infraMember;
 select * from infraMember where ifmmId = "pinetreelch"  and  ifmmPwd = "sdfsdf";
@@ -20,10 +40,7 @@ select
 	a.tdbkSeq
 	,a.tdbkBookTitle
     ,a.tdbkSubtitle
-    ,b.tdbkathSeq
-    ,b.tradAuthor_tdatSeq
-    ,b.tradBook_tdbkSeq
-    ,c.tdauName
+    ,b.*
 
 from tradBook a
 left join tradBookAuthor b on a.tdbkSeq = b.tradBook_tdbkSeq
@@ -81,4 +98,40 @@ left join tradAuthor c on b.tradAuthor_tdatSeq = c.tdauSeq
 -- union 
 
 -- 구매페이지
-  
+  	select
+			a. *
+            , b. *
+            -- ,(select count(cgSeq)as "total" FROM codeCd )
+		from codeCd a
+		join codeGroup b on a.codeGroup_cgSeq = b.cgSeq
+        WHERE 1=1
+			AND a.delNY = 0
+           ;
+           
+		SELECT 
+			a.*
+			, b.codeGroup_cgSeq
+            ,(select count(cSeq)  from codeCd where codeGroup_cgSeq = cgSeq ) as "total"
+		FROM codeGroup a
+		inner JOIN codeCd b on b.codeGroup_cgSeq = a.cgSeq
+		WHERE 1=1
+			AND a.delNY = 0
+            ;
+		
+        -- insert
+        
+        INSERT INTO codeGroup(
+ 
+        cgName
+        ,cgKor
+
+        )
+        VALUES (
+	
+            "sdf"
+            ,"abc"
+        
+        )
+        ;
+            
+            
